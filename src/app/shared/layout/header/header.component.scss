@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    width: 100%;
+    max-width: 1140px;
+    background-color: #fff;
+    margin: 20px auto;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #6050f0;
+
+    h1 {
+        font-size: 22px;
+    }
+}

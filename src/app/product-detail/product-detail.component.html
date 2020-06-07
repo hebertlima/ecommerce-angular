@@ -1,0 +1,76 @@
+<div class="catalog-product-detail">
+    <div class="header">
+        <h2>Product Detail</h2>
+        <ul class="beadcrumb">
+            <li>
+                <a routerLink="/">Home</a>
+            </li>
+            <li>
+                <span [innerHTML]="product.title"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="panel">
+        <div class="gallery">
+            <img class="cover" [src]="product.getImagem()" [alt]="">
+            <ul class="thumbs">
+                <li><img src="https://via.placeholder.com/107x142" alt=""></li>
+                <li><img src="https://via.placeholder.com/107x142" alt=""></li>
+                <li><img src="https://via.placeholder.com/107x142" alt=""></li>
+                <li><img src="https://via.placeholder.com/107x142" alt=""></li>
+            </ul>
+        </div>
+        <div class="details">
+            <span class="brand">Marca</span>
+            <h1 [innerHTML]="product.title"></h1>
+            <div class="avaliation">
+                <div class="rating">
+                    <i-feather *ngFor="let i of [].constructor(product.rating)"  name="star"></i-feather>
+                </div>
+                <span>
+                    (36 Customers Reviews)
+                </span>
+            </div>
+
+            <div class="price-container">
+                <span class="discont">20% off</span>
+                <span class="price">Price: <span class="from">$100 USD </span> 
+                <strong [innerHTML]="(product.price | currency) + ' USD'"></strong></span>
+            </div>
+
+            <span class="stock">InStock</span>
+
+            <p class="description" [innerHTML]="product.description"></p>
+
+            <div class="options-container">
+                <div class="option">
+                    <span class="label">Quantity</span>
+                    <div class="spinner-container">
+                        <input type="text" min="0" [value]="quantity" readonly>
+                        <div class="spinner-buttons">
+                            <button (click)="spinner('+1')"><i-feather name="chevron-up"></i-feather></button>
+                            <button (click)="spinner('-1')"><i-feather name="chevron-down"></i-feather></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option">
+                    <span class="label">Size</span>
+                    <select class="size-container">
+                        <option value="1">Small</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Large</option>
+                        <option value="4">X-Large</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="actions-container">
+                <button class="fav"><span class="icon"><i-feather name="heart"></i-feather></span></button>
+                <button class="buy" (click)="addToCart(product)"><span class="icon"><i-feather name="shopping-cart"></i-feather> </span><span class="label">Add to cart</span></button>
+            </div>
+        </div>
+        <div class="info">
+            informações 
+        </div>
+    </div>
+</div> 

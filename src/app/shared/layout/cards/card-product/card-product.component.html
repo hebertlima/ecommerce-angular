@@ -1,0 +1,14 @@
+<div class="product-container">
+    <img [src]="product.getThumb()" [alt]="product.title">
+    <div class="info">
+        <a [routerLink]="['/catalog', product.slug]" [innerHTML]="product.title"></a>
+        <div class="rating">
+            <i-feather *ngFor="let i of [].constructor(product.rating)" name="star"></i-feather>
+        </div>
+        <button class="price" (click)="addToCart(product)">
+            <span [innerHTML]="product.price | currency : 'USD' : '$' : '2.0-0' "></span>
+            <span class="icon"><i-feather class="icon" name="shopping-cart"></i-feather></span>
+        </button>
+        <div class="stock" [innerHTML]="'Stock: '+ product.stock +' Items'"></div>
+    </div>
+</div>

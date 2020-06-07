@@ -1,0 +1,20 @@
+.catalog-container {
+    max-width: 1140px;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .catalog-container { 
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .catalog-container { 
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

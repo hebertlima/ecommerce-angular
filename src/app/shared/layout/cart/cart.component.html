@@ -1,0 +1,24 @@
+<div class="cart-container">
+    <button class="toggle" [class.full]="products.length" (click)="toggle()"><i-feather name="shopping-bag"></i-feather></button>
+
+    <ul class="items" [class.show]="show">
+        <div *ngIf="products.length">
+            <li class="item" *ngFor="let item of products">
+                <img [src]="item.getThumb()" [alt]="item.title">
+                <div class="details">
+                    <a [routerLink]="[ '/catalog', item.slug ]" class="title" [innerHTML]="item.title"></a>
+                    <span class="price" [innerHTML]="(item.price | currency )+' Unit'"></span>
+                    <span class="quantity" [innerHTML]="item.getQuantity() + ' Items'"></span>
+                    <button (click)="removeCartItem(item)"><i-feather name="trash"></i-feather></button>
+                </div>
+            </li>
+        </div>
+        <li class="item total" *ngIf="products.length">
+            <span>Total</span>
+            <span [innerHTML]="total | currency"></span>
+        </li>
+        <li *ngIf="!products.length" class="item nodata">
+            no itens
+        </li>
+    </ul>
+</div>

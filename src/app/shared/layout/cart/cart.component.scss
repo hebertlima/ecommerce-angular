@@ -1,0 +1,116 @@
+.cart-container {
+    position: relative;
+
+    .toggle {
+        border: 0;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+
+        i-feather {
+            max-width: 16px;
+            line-height: 36px;
+        }
+
+        &.full {
+            background-color: #64dd17;
+            color: #fff;
+        }
+    }
+
+    .items {
+        padding: 5px;
+        margin: 0;
+        list-style: none;
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 240px;
+        background-color: #fff;
+        box-shadow: 0px 0px 18px -14px;
+        transform: translateY(10px);
+        z-index: 99;
+        div {
+            display: block;
+            width: 100%;
+            max-height: 253px;
+            overflow-y: auto;
+        }
+
+        .item {
+            display: flex;
+
+            +.item {
+                margin-top: 5px;
+            }
+
+            &:not(.total):not(.nodata):hover {
+                background-color: #f5f5f5;
+            }
+
+            img {
+                width: 54px;
+                height: 54px;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .details {
+                display: grid;
+                flex: 1;
+                grid-template-areas:
+                    "title title button"
+                    "price price button"
+                    "quantity quantity button";
+
+                .title {
+                    grid-area: title;
+                    padding: 2px 5px;
+                    font-size: 13px;
+                    text-decoration: none;
+                    font-weight: 700;
+                }
+
+                .price {
+                    grid-area: price;
+                    padding: 2px 5px;
+                    font-size: 11px;
+                }
+
+                .quantity {
+                    grid-area: quantity;
+                    padding: 2px 5px;
+                    font-size: 11px;
+                }
+
+                button {
+                    grid-area: button;
+                    background-color: transparent;
+
+                    i-feather {
+                        max-width: 16px;
+                        line-height: 36px;
+                    }
+                }
+            }
+
+            &.total {
+                margin-top: 10px;
+                justify-content: space-between;
+                font-weight: 700;
+            }
+            
+            &.nodata {
+                padding: 16px;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        &.show {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
