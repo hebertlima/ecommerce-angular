@@ -22,9 +22,7 @@ export class CatalogComponent implements OnInit {
 
   private loadData() {
     this.productService.get().subscribe((items: Product[]) => {
-      this.products = items.map(product => {
-        return new Product(product);
-      });
+      this.products = items;
     });
   }
 

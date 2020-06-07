@@ -7,18 +7,15 @@ import { Product } from 'src/app/shared/models';
   templateUrl: './card-product.component.html',
   styleUrls: ['./card-product.component.scss']
 })
-export class CardProductComponent implements OnInit {
+export class CardProductComponent {
   @Input() product: Product;
   
   constructor(
     private cartService: CartService
   ) { }
 
-  ngOnInit(): void {
-    // this.product = new Product(this.product);
-  }
-
-  addToCart(item: Product) {
-    this.cartService.add(item);
+  addToCart(product: Product) {
+    let _product = new Product(product);
+    this.cartService.add(_product);
   }
 }

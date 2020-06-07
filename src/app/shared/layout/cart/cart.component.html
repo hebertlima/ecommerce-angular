@@ -8,7 +8,7 @@
                 <div class="details">
                     <a [routerLink]="[ '/catalog', item.slug ]" class="title" [innerHTML]="item.title"></a>
                     <span class="price" [innerHTML]="(item.price | currency )+' Unit'"></span>
-                    <span class="quantity" [innerHTML]="item.getQuantity() + ' Items'"></span>
+                    <span class="quantity" [innerHTML]="item.quantity+ ' Items'"></span>
                     <button (click)="removeCartItem(item)"><i-feather name="trash"></i-feather></button>
                 </div>
             </li>

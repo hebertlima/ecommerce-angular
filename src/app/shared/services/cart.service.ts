@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Product } from '../models';
+import { Product } from '../interfaces/product.interface';
 
-
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CartService {
 
   private items: Product[] = [];
@@ -13,37 +10,31 @@ export class CartService {
   private currentCartSubject = new BehaviorSubject<Product[]>([]);
   public currentCart = this.currentCartSubject.asObservable();
 
-  constructor() { 
-  }
+  constructor() {}
 
-  add(item) {
-    console.log(`Add item ${item.title} to cart`);
-
-    if ( this.items.includes(item) ) {
-      console.log(this.items);
-      this.update(item);
+  async add(product: Product) {
+    if ( this.items.find(item => item.id === product.id) ) {
+      this.items.forEach(item => {
+        if ( item.id === product.id ) {
+          item.increment(product.quantity)
+        }
+      });
     } else {
-      this.items.push(item);
-      this.updateCart(this.items);
+      this.items.push(product);
+      console.log(`Add item ${product.title} to cart`);
     }
-  }
-
-  remove(item) {
-    console.log(`Remove item ${item.title} from cart`);
-    this.items = this.items.filter(product => product.id != item.id);
-    console.log(this.items);
+  
     this.updateCart(this.items);
   }
 
-  update(product: Product) {
-    let index = this.items.indexOf(product);
-    if ( index !== -1 ) {
-      this.items[index].increment(product.quantity);
-      this.updateCart(this.items);
-    }
+  remove(item: Product) {
+    this.items = this.items.filter(product => product.id != item.id);
+    this.updateCart(this.items);
+    console.log(`Remove item ${item.title} from cart`);
   }
 
-  private updateCart(items) {
-    this.currentCartSubject.next(items);
+  private updateCart(products: Product[]): void {
+    this.currentCartSubject.next(products);
+    console.log("Cart updated!");
   }
 }

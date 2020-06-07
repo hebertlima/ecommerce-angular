@@ -7,8 +7,7 @@ export class Product implements Item {
     stock: number;
     rating: number;
     imagem: string;
-    readonly quantity?: number;
-    _quantity: number;
+    quantity?: number;
     description: string;
     slug:string;
 
@@ -17,32 +16,24 @@ export class Product implements Item {
         }) {
         if ( properties ) {
             Object.assign(this, properties);
-            if (!properties.quantity) {
-                this._quantity = 1;
-            } else {
-                this._quantity = properties.quantity;
-            }
+            this.quantity = properties.quantity || 1;
         }
     }
 
     increment(quantity?: number) {
-        if ( quantity > 1 ) {
-            this.addToQUantity((quantity - 1));
+        if ( quantity >= 2 ) {
+            this.addToQUantity(quantity);
         } else {
-            this._quantity++;
+            this.quantity++;
         }
     }
 
     addToQUantity(quantity: number): void {
-        this._quantity = this._quantity + quantity;
+        this.quantity = this.quantity + quantity;
     }
 
     decrement() {
-        this._quantity--;
-    }
-
-    getQuantity(): number {
-        return this._quantity;
+        this.quantity--;
     }
 
     getImagem() {

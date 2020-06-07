@@ -7,7 +7,7 @@ import { Product } from '../../interfaces/product.interface';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent { 
 
   show: boolean = false;
   products: Product[] = [];
@@ -20,13 +20,9 @@ export class CartComponent implements OnInit {
         window.scrollTo({top: 0, behavior: 'smooth'});
         this.products = items;
         this.total = items.reduce((total, product) => {
-          console.log(product);
-          return total + product.getQuantity() * product.price;
+          return total + product.quantity * product.price;
         }, 0 );
     });
-  }
-
-  ngOnInit(): void {
   }
 
   toggle() {

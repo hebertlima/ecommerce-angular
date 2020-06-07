@@ -12,10 +12,12 @@ export class ProductsService {
   ) { }
 
   get(): Observable<Product[]> {
-    return this.http.get<Product[]>('/assets/products.json');
+    return this.http.get<Product[]>('/assets/products.json').pipe(map(products => products.map(product => new Product(product))));
   }
 
   show(slug: string) : Observable<Product[]> {
-    return this.http.get<Product[]>('/assets/products.json').pipe(map(products => products.filter(product => product.slug == slug)));
+    return this.http.get<Product[]>('/assets/products.json').pipe(map(products => products.filter(product => {
+      if(product.slug == slug) return new Product(product)
+    })));
   }
 }
