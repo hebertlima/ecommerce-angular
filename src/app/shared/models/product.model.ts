@@ -10,9 +10,10 @@ export class Product implements Item {
     quantity?: number;
     description: string;
     slug:string;
+    brand: string;
 
     constructor(properties?: {
-            id?: number, title: string, price: number, stock: number, rating: number, imagem: string, quantity?: number, description: string, slug: string
+            id?: number, title: string, price: number, stock: number, rating: number, imagem: string, quantity?: number, description: string, slug: string, brand: string
         }) {
         if ( properties ) {
             Object.assign(this, properties);

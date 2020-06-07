@@ -3,7 +3,10 @@
         <h2>Product Detail</h2>
         <ul class="beadcrumb">
             <li>
-                <a routerLink="/">Home</a>
+                <a routerLink="/">Home</a> /
+            </li>
+            <li>
+                <span [innerHTML]="product.brand"></span> /
             </li>
             <li>
                 <span [innerHTML]="product.title"></span>
@@ -21,7 +24,7 @@
             </ul>
         </div>
         <div class="details">
-            <span class="brand">Marca</span>
+            <span class="brand" [innerHTML]="product.brand"></span>
             <h1 [innerHTML]="product.title"></h1>
             <div class="avaliation">
                 <div class="rating">
@@ -69,8 +72,6 @@
                 <button class="buy" (click)="addToCart(product)"><span class="icon"><i-feather name="shopping-cart"></i-feather> </span><span class="label">Add to cart</span></button>
             </div>
         </div>
-        <div class="info">
-            informações 
-        </div>
+        <div class="info"></div>
     </div>
 </div> 

@@ -8,6 +8,7 @@ export interface Product {
     quantity?: number;
     description: string;
     slug:string;
+    brand: string;
 
     increment(quantity?: number): void;
     decrement(): void;
